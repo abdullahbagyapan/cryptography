@@ -33,7 +33,7 @@ static inline void STORE32_LE(uint8_t *p, uint32_t v)
 }
 
 
-void salsa20_xor(uint8_t *out,
+void chacha20_xor(uint8_t *out,
                  const uint8_t *in,
                  size_t len,
                  const uint8_t key[32],
