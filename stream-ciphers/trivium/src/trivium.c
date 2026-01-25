@@ -51,22 +51,14 @@ uint8_t trivium_rotate()
     t2 ^= (stream[174] & stream[175]) ^ stream[263];
     t3 ^= (stream[285] & stream[286]) ^ stream[68];
 
-
-    // rotate one clock
+    // shift stream to right
     uint16_t i;
-    for(i = 287; i > 177; i--) {
-        stream[i] = stream[i - 1];  
-    } 
+    for(i = SIZE_OF_STREAM - 1; i > 0; i--) {
+        stream[i] = stream[i - 1];
+    }
+
     stream[177] = t2;
-
-    for(i = 176; i > 93; i--) {
-        stream[i] = stream[i - 1];
-    }
     stream[93] = t1;
-
-    for(int i = 92; i > 0; i--) {
-        stream[i] = stream[i - 1];
-    }
     stream[0] = t3;
 
     return z;
